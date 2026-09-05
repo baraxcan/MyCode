@@ -17,24 +17,6 @@ clock_t startTime;
 double getCurrentTime() {
 	return (double)(clock() - startTime) / CLOCKS_PER_SEC;
 }
-#ifndef LOCAL
-std::ostream& operator << (std::ostream& dest, __int128_t value) {
-    if (value == 0) return dest << 0;
-    if (value < 0) {
-        dest << '-';
-        value = -value;
-    }
-    __int128_t t = value;
-    char buffer[64];
-    char* d = std::end(buffer);
-    while (t > 0) {
-        --d;
-        *d = "0123456789"[t % 10];
-        t /= 10;
-    }
-    return dest.write(d, std::end(buffer) - d);
-}
-#endif
 
 typedef long long ll;
 typedef long double ld;
@@ -62,78 +44,8 @@ typedef set<int> seti;
 struct cell {int x, y;};
 /*----------------------------------------------------------------------------------------------------------------------*/
 /*-------------------------------------------------------WORK-AREA------------------------------------------------------*/
-const int MOD = 1e9 + 7;
-
-struct segtree {
-    vecll tree;
-    int size = 1;
-    segtree(vecInt& a) {
-        init(a.size());
-        build(a, 0, 0, size);
-    }
-    void init(int n) {
-        while (size <= n)
-            size *= 2;
-        tree.assign(2 * size - 1, LLONG_MAX);
-    }
-    void build(vecInt& a, int x, int l, int r) {
-        if (r - l == 1) {
-            if (l < a.size()) {
-                tree[x] = a[l];
-            }
-        }
-        else {
-            int m = (l + r) / 2;
-            build(a, 2 * x + 1, l, m);
-            build(a, 2 * x + 2, m, r);
-            tree[x] = min(tree[2 * x + 1], tree[2 * x + 2]);
-        }
-    }
-    void set(int i, int v, int x, int l, int r) {
-        if (r - l == 1) {
-            tree[x] = v;
-            return;
-        }
-        int m = (r + l) / 2;
-        if (i < m) {
-            set(i, v, 2 * x + 1, l, m);
-        }
-        else {
-            set(i, v, 2 * x + 2, m, r);
-        }
-        tree[x] = min(tree[2 * x + 1], tree[2 * x + 2]);
-    }
-    void set(int i, int v) {
-        set(i, v, 0, 0, size);
-    }
-    ll get(int lx, int rx, int x, int l, int r) {
-        if (l >= rx || r <= lx) return LLONG_MAX;
-        if (l >= lx && r <= rx) return tree[x];
-        int m = (l + r) / 2;
-        ll a = get(lx, rx, 2 * x + 1, l, m);
-        ll b = get(lx, rx, 2 * x + 2, m, r);
-        return min(a, b);
-    }
-    ll get(int lx, int rx) {
-        return get(lx, rx, 0, 0, size);
-    }
-};
-
 void solve() {
-    int n, m; cin >> n >> m;
-    vecInt a(n, 0); for (int i = 0; i < n; ++i) cin >> a[i];
-    segtree tree(a);
-    for (int q = 0; q < m; ++q) {
-        int c; cin >> c;
-        if (c == 1) {
-            int i, v; cin >> i >> v;
-            tree.set(i, v);
-        }
-        else {
-            int l, r; cin >> l >> r;
-            cout << tree.get(l, r) << endl;
-        }
-    }
+    // solve
 }
 /*----------------------------------------------------------------------------------------------------------------------*/
 //   ####    ##  ##             ##    ##  ##    ######    ##    ######    ##    ######  ##   ##
