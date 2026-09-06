@@ -7,11 +7,11 @@
 
 using namespace std;
 
-// #ifdef LOCAL
-//     #define eprintf(...) {fprintf(stderr, __VA_ARGS__);fflush(stderr);}
-// #else
-//     #define eprintf(...) 42;
-// #endif
+#ifdef LOCAL
+    #define eprintf(...) {fprintf(stderr, __VA_ARGS__);fflush(stderr);}
+#else
+    #define eprintf(...) return 0;
+#endif
 
 clock_t startTime;
 double getCurrentTime() {
@@ -73,6 +73,4 @@ int main() {
 
 
     // eprintf("time = %.5lf\n", getCurrentTime());
-    
-    return 0;
 }
