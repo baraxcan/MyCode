@@ -72,5 +72,5 @@ int main() {
     }
 
 
-    // eprintf("time = %.5lf\n", getCurrentTime());
+    eprintf("time = %.5lf\n", getCurrentTime());
 }
