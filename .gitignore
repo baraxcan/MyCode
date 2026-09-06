@@ -4,4 +4,7 @@ main.obj
 main.pdb
 vc140.pdb
 .vscode
-.output
+output
+local.h
+input.txt
+output.txt

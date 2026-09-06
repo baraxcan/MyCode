@@ -7,11 +7,11 @@
 
 using namespace std;
 
-#ifdef LOCAL
-    #define eprintf(...) {fprintf(stderr, __VA_ARGS__);fflush(stderr);}
-#else
-    #define eprintf(...) 42;
-#endif
+// #ifdef LOCAL
+//     #define eprintf(...) {fprintf(stderr, __VA_ARGS__);fflush(stderr);}
+// #else
+//     #define eprintf(...) 42;
+// #endif
 
 clock_t startTime;
 double getCurrentTime() {
@@ -29,6 +29,7 @@ typedef vector<double> vecdbl;
 typedef vector<char> vecChar;
 typedef vector<vector<char>> vecvecChar;
 typedef vector<pair<int, int>> vecpii;
+typedef vector<pair<long long, long long>> vecpll;
 typedef vector<vector<pair<int, int>>> vecvecpii;
 typedef vector<pair<double, double>> vecdd;
 typedef vector<string> vecStr;
@@ -45,7 +46,7 @@ struct cell {int x, y;};
 /*----------------------------------------------------------------------------------------------------------------------*/
 /*-------------------------------------------------------WORK-AREA------------------------------------------------------*/
 void solve() {
-    // solve
+    
 }
 /*----------------------------------------------------------------------------------------------------------------------*/
 //   ####    ##  ##             ##    ##  ##    ######    ##    ######    ##    ######  ##   ##
@@ -63,15 +64,15 @@ int main() {
     freopen("input.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
 #endif
-    solve();
+    // solve();
     
-    // int t; cin >> t;
-    // while (t--) {
-    //     solve();
-    // }
+    int t; cin >> t;
+    while (t--) {
+        solve();
+    }
 
 
-    eprintf("time = %.5lf\n", getCurrentTime());
+    // eprintf("time = %.5lf\n", getCurrentTime());
     
     return 0;
 }
