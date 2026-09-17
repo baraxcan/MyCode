@@ -1,4 +1,4 @@
-// time   - O( n * loglog(n) )
+// time   - O( n * log(log(n)) )
 // memory - O(n)
 int n; cin >> n;
 vector<bool> is_prime(n + 1, true);
